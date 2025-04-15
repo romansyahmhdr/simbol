@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Produk Premium</title>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    integrity="sha512-d7JUCI0qLFES1z9JjgpQ1eJ0Uzp3pQ2bwMCFVF3QbtOK4klWaOBj+AJ2AhBbP4gfrW6t1g20bAX+G/gY7vxNBA=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html, body {
+      height: 100%;
+      overflow: hidden;
+    }
+    body {
+      position: relative;
+      font-family: 'Segoe UI', sans-serif;
+      color: #fff;
+      background: radial-gradient(circle at center, #2a2a2a, #000000);
+      background-size: 200% 200%;
+      animation: backgroundShift 15s ease infinite;
+    }
+    @keyframes backgroundShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    h1 {
+      text-align: center;
+      font-size: 3rem;
+      color: gold;
+      margin: 0.8rem 0 0.5rem;
+      animation: fadeInDown 1s ease forwards;
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    }
+
+    h3 {
+        text-align: center;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+    .home-icon {
+      position: fixed;
+      bottom: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+    }
+    .home-icon a {
+      text-decoration: none;
+      color: gold;
+      font-size: 1.2rem;
+      transition: transform 0.3s ease;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 0.5rem 1.5rem;
+      border-radius: 20px;
+    }
+    .home-icon a:hover {
+      transform: scale(1.1);
+    }
+    .slider-container {
+      display: flex;
+      overflow-x: scroll;
+      overflow-y: hidden;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      height: calc(100vh - 4rem);
+      -webkit-overflow-scrolling: auto;
+      scroll-padding: 0 1rem;
+    }
+    .slider-container::-webkit-scrollbar {
+      display: none;
+    }
+    .slide {
+      flex: 0 0 100%;
+      max-width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      scroll-snap-align: center;
+      padding: 1rem;
+      text-align: center;
+      transition: filter 0.5s ease;
+      min-height: 100vh;
+      box-sizing: border-box;
+    }
+    .slide img {
+      width: 80vw;
+      max-width: 350px;
+      height: auto;
+      object-fit: contain;
+      border-radius: 20px;
+      filter: drop-shadow(0 0 10px gold);
+      animation: glowBreath 3s ease-in-out infinite;
+      transition: transform 0.3s ease, filter 0.3s ease;
+    }
+    .slide.inactive img {
+      filter: blur(3px) brightness(0.6);
+      animation: none;
+    }
+    @keyframes glowBreath {
+      0%, 100% {
+        filter: drop-shadow(0 0 10px gold);
+      }
+      50% {
+        filter: drop-shadow(0 0 20px white);
+      }
+    }
+    .product-title,
+    .product-description {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .slide.active .product-title,
+    .slide.active .product-description {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .product-title {
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      font-size: 2rem;
+      font-weight: bold;
+      color: gold;
+      margin-top: 1rem;
+      animation: fadeInUp 1s ease 0.2s forwards;
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    }
+    .product-description {
+      font-size: 1rem;
+      margin: 0.5rem auto;
+      max-width: 90%;
+      color: #eee;
+      animation: fadeInUp 1s ease 0.4s forwards;
+    }
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @keyframes fadeInDown {
+      0% {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @media (min-width: 768px) {
+      .slide {
+        flex-direction: column;
+        text-align: center;
+      }
+      .product-title {
+        font-size: 2rem;
+      }
+      .product-description {
+        font-size: 1.2rem;
+        max-width: 60%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="home-icon">
+    <a href="https://example.com" title="Kembali ke Home">Home</a>
+  </div>
+  <h1>SIMBOL SAKRAL</h1>
+  <h3>Swipe untuk lihat lain nya</h3>
+  <div class="slider-container" id="slider">
+    <div class="slide active">
+      <img src="92.jpg.png" alt="Produk 1" />
+      <div class="product-title">KEMBAR</div>
+      <div class="product-description">
+        Nama kembar diambil dari nama jalan yang dulu sering ditempati oleh para pendiri kami. 
+        Lebih jelas nya kembar di dirikan di sma 11 bandung yaitu di jl.kembar. 
+        Itulah sebab nya kenapa kelompok gengmotor ini diberi nama kembar.
+      </div>
+    </div>
+    <div class="slide inactive">
+      <img src="kembar.jpg.png" alt="Produk 2" />
+      <div class="product-title">1992</div>
+      <div class="product-description">
+        1992 adalah tahun kelahiran atau dibentuknya kembar. Kembar dibentuk pada 1 oktober tahun 1992.
+        Pada setiap hari jadi nya kembar pasti selalu mengadakan tradisi kami sendiri yang di ikuti oleh semua anggota kembar.
+        Sebagai tanda resmi nya menjadi anggota kembar untuk yang baru bergabung bersama kami.
+      </div>
+    </div>
+    <div class="slide inactive">
+      <img src="logo.jpg.png" alt="Produk 3" />
+      <div class="product-title">ARTI SIMBOL DANGER</div>
+      <div class="product-description">
+        Logo bulat yang didalam nya terdapat 3 lengkuk kan hitam menanda kan 3 orang yang mendirikan kembar.
+        Tapi sangat disayangkan, Salah satu dari pendiri kembar telah gugur.
+        Semoga amal ibadah beliau diterima di sisi allah. 
+       Terimakasih sudah membentuk wadah kelompok ini CAPTEN.
+      </div>
+    </div>
+  </div>
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    const container = document.getElementById('slider');
+
+    function activateSlide(index) {
+      slides.forEach(s => s.classList.remove('active'));
+      slides.forEach(s => s.classList.add('inactive'));
+      slides[index].classList.remove('inactive');
+      slides[index].classList.add('active');
+      slides[index].scrollIntoView({ behavior: 'smooth', inline: 'center' });
+    }
+
+    slides.forEach((slide, index) => {
+      slide.addEventListener('click', () => {
+        activateSlide(index);
+      });
+    });
+
+    let startX = 0;
+    let allowSwipe = true;
+
+    container.addEventListener('touchstart', (e) => {
+      startX = e.touches[0].clientX;
+    });
+
+    container.addEventListener('touchend', (e) => {
+      if (!allowSwipe) return;
+      allowSwipe = false;
+      setTimeout(() => allowSwipe = true, 300);
+
+      const endX = e.changedTouches[0].clientX;
+      const diff = startX - endX;
+      const activeIndex = Array.from(slides).findIndex(s => s.classList.contains('active'));
+
+      if (diff > 50 && activeIndex < slides.length - 1) {
+        activateSlide(activeIndex + 1);
+      } else if (diff < -50 && activeIndex > 0) {
+        activateSlide(activeIndex - 1);
+      }
+    });
+  </script>
+</body>
+</html>
+
+
+
+
+
